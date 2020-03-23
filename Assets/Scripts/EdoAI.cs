@@ -1,23 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EdoAI : BaseAI
+public class EdoAI : MonoBehaviour
 {
-    public override IEnumerator RunAI()
+    public Transform target;
+
+    void follow()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            yield return Ahead(200);
-            yield return FireFront(1);
-            yield return TurnLookoutLeft(90);
-            yield return TurnLeft(360);
-            yield return FireLeft(1);
-            yield return TurnLookoutRight(180);
-            yield return Back(200);
-            yield return FireRight(1);
-            yield return TurnLookoutLeft(90);
-            yield return TurnRight(90);
-        }
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.destination = target.position;
+    }
+
+
+    private void Update()
+    {
+        follow();
     }
 }
