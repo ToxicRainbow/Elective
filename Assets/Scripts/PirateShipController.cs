@@ -11,6 +11,7 @@ public class PirateShipController : MonoBehaviour
     public GameObject Lookout = null;
     public GameObject[] sails = null;
     private BaseAI ai = null;
+    
 
     private float BoatSpeed = 100.0f;
     private float SeaSize = 500.0f;
@@ -128,6 +129,8 @@ public class PirateShipController : MonoBehaviour
             yield return new WaitForFixedUpdate();            
         }
     }
+
+
 
     
 }
