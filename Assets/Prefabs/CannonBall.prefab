@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 114323351021141692}
   - component: {fileID: 695329460}
   - component: {fileID: 695329459}
+  - component: {fileID: 1188767671011344550}
   m_Layer: 0
   m_Name: CannonBall
   m_TagString: Untagged
@@ -4758,3 +4759,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!135 &1188767671011344550
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501402490172963987}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7
+  m_Center: {x: 0, y: 0, z: 0}

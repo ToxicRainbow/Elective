@@ -7,7 +7,7 @@ public class CannonBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -15,4 +15,16 @@ public class CannonBall : MonoBehaviour
     {
         transform.Translate(new Vector3(0f, 0f, 500 * Time.fixedDeltaTime), Space.Self);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.tag == "GameWall")
+        {
+            Destroy(gameObject);
+        }
+
+        
+    }
+
 }

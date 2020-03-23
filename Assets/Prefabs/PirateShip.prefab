@@ -131,8 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6732724274104520258}
   - component: {fileID: 114935950901250498}
-  - component: {fileID: 4529641964278838392}
   - component: {fileID: 8082125333420773932}
+  - component: {fileID: 6905986434952403119}
   m_Layer: 0
   m_Name: PirateShip
   m_TagString: Boat
@@ -181,19 +181,6 @@ MonoBehaviour:
   - {fileID: 1607915427564693173}
   - {fileID: 1607915427564693193}
   - {fileID: 1607915427564693175}
---- !u!65 &4529641964278838392
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7222537879436563100}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 33.8, y: 57.3, z: 72.9}
-  m_Center: {x: 0, y: 32.7, z: 3.4}
 --- !u!54 &8082125333420773932
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -210,6 +197,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &6905986434952403119
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222537879436563100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30, y: 80, z: 90}
+  m_Center: {x: 0, y: 28.37, z: 5.22}
 --- !u!1 &8457703061111911330
 GameObject:
   m_ObjectHideFlags: 0
