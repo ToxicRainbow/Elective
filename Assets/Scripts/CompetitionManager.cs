@@ -15,10 +15,11 @@ public class CompetitionManager : MonoBehaviour
         BaseAI[] aiArray = new BaseAI[] {
             new IljaAI(), 
             new MarcelAI(), 
-            new PondAI()
+            new PondAI(),
+            new EdoAI()
         };
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 4; i++)
         {
             GameObject pirateShip = Instantiate(PirateShipPrefab, SpawnPoints[i].position, SpawnPoints[i].rotation);
             PirateShipController pirateShipController = pirateShip.GetComponent<PirateShipController>();
