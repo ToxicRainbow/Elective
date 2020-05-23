@@ -7,12 +7,12 @@ public class EdoAI : BaseAI
 
     private bool ship_detected = false;
 
-
     public override IEnumerator RunAI()
     {
         while(true)
         {
-                       
+            yield return Ahead(200);
+            
             if(ship_detected == true)
             {
                 yield return FireFront(1);
@@ -24,8 +24,6 @@ public class EdoAI : BaseAI
         }
     }
 
-
-
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
         ship_detected = true;
@@ -33,3 +31,4 @@ public class EdoAI : BaseAI
         Debug.Log("Edo's Ship fired!");
     }
 }
+    
