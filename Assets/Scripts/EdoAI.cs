@@ -11,7 +11,7 @@ public class EdoAI : BaseAI
     {
         while(true)
         {
-            yield return Ahead(200);
+            yield return Ahead(10);
             
             if(ship_detected == true)
             {
