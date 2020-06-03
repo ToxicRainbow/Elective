@@ -28,8 +28,7 @@ public class PirateShipController : MonoBehaviour
         ai.Ship = this;
     }
 
-    public void StartBattle() {
-        Debug.Log("test");
+    public void StartBattle() {        
         StartCoroutine(ai.RunAI());
     }
 
