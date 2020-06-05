@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6319404275184584077}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lookout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 6811341055644707241}
   - component: {fileID: 8465565996615593584}
   - component: {fileID: 8960578696574778319}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Trigger
   m_Icon: {fileID: 0}

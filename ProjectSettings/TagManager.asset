@@ -8,6 +8,7 @@ TagManager:
   - Boat
   - GameWall
   - BoatHitBox
+  - CannonBall
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Scan
+  - CannonBall
   - 
   - 
   - 
