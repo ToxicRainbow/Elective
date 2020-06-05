@@ -30,6 +30,14 @@ public class PirateShipController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "CannonBall")
+        {
+            BoatHealth = BoatHealth - 10;
+        }
+    }
+
     public void SetAI(BaseAI _ai) {
         ai = _ai;
         ai.Ship = this;
