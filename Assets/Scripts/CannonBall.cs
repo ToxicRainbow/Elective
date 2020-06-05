@@ -25,7 +25,7 @@ public class CannonBall : MonoBehaviour
         }
         if (other.tag == "Boat")
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
             Debug.Log("hit");
         }
     }

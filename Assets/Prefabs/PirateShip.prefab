@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684788094787865858}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 11.3, y: 17, z: 0}
+  m_LocalPosition: {x: 21.4, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6732724274104520258}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741358350079457689}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -11, y: 17, z: 0}
+  m_LocalPosition: {x: -26, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6732724274104520258}
@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2463417276785998698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 17.7, z: 40.83}
+  m_LocalPosition: {x: 0, y: 17.7, z: 61.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6732724274104520258}
@@ -181,7 +181,7 @@ MonoBehaviour:
   - {fileID: 1607915427564693173}
   - {fileID: 1607915427564693193}
   - {fileID: 1607915427564693175}
-  BoatHitBox: {fileID: 0}
+  BoatHealth: 100
 --- !u!54 &8082125333420773932
 Rigidbody:
   m_ObjectHideFlags: 0
