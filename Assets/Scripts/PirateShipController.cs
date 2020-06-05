@@ -11,8 +11,8 @@ public class PirateShipController : MonoBehaviour
     public GameObject Lookout = null;
     public GameObject[] sails = null;
     private BaseAI ai = null;
-    
 
+    public int BoatHealth = 100;
     private float BoatSpeed = 100.0f;
     private float SeaSize = 500.0f;
     private float RotationSpeed = 180.0f;
@@ -21,6 +21,13 @@ public class PirateShipController : MonoBehaviour
     void Start()
     {
         
+    }
+    public void BoatDamage()
+    {
+        if(BoatHealth == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetAI(BaseAI _ai) {
@@ -36,6 +43,7 @@ public class PirateShipController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        BoatDamage();
     }
 
     void OnTriggerStay(Collider other) {
