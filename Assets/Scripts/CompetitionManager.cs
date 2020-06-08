@@ -25,6 +25,7 @@ public class CompetitionManager : MonoBehaviour
             PirateShipController pirateShipController = pirateShip.GetComponent<PirateShipController>();
             pirateShipController.SetAI(aiArray[i]);
             pirateShips.Add(pirateShipController);
+            pirateShip.name = "Ship" + i;
         }
         
     }
