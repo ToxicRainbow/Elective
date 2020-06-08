@@ -8,6 +8,7 @@ public class PirateShipController : MonoBehaviour
     public Transform CannonFrontSpawnPoint = null;
     public Transform CannonLeftSpawnPoint = null;
     public Transform CannonRightSpawnPoint = null;
+    public Transform targetForDirection = null;
     public GameObject Lookout = null;
     public GameObject[] sails = null;
     private BaseAI ai = null;
@@ -36,6 +37,15 @@ public class PirateShipController : MonoBehaviour
         {
             BoatHealth = BoatHealth - 10;
         }
+        TargetClose();
+    }
+
+    public void TargetClose()
+    {
+        Vector3 targetDir = targetForDirection.position - transform.position;
+        float angle = Vector3.Angle(targetDir, transform.forward);
+        if (angle < 5.0f)
+            print("close");
     }
 
     public void SetAI(BaseAI _ai) {

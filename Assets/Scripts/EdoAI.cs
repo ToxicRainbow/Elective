@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EdoAI : BaseAI
 {
-
+    private PirateShipController PirateShipController;
     private bool ship_detected = false;
 
     public override IEnumerator RunAI()
@@ -29,6 +29,9 @@ public class EdoAI : BaseAI
         ship_detected = true;
         Debug.Log("Ship detected: " + e.Name + " at distance: " + e.Distance);
         Debug.Log("Edo's Ship fired!");
+
+        
+        
     }
 }
     
