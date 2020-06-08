@@ -46,19 +46,14 @@ public class RobertAI : BaseAI
         if (e.Name == "Ship0")
         {
             InRangeShip1 = true;
-            Debug.Log("Ship detected: " + e.Name = "In Range!");
         }
         else if(e.Name == "Ship1")
         {
             InRangeShip2 = true;
-            Debug.Log("Ship detected: " + e.Name = "In Range!");
         }
         else if (e.Name == "Ship3")
         {
             InRangeShip3 = true;
-            Debug.Log("Ship detected: " + e.Name = "In Range!");
         }
-
-        InRange = true;
     }
 }
