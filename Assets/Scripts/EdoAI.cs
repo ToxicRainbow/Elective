@@ -13,7 +13,7 @@ public class EdoAI : BaseAI
     public bool LookoutIsNowRight = false;
     public bool LookoutIsNowFront = false;
 
-    public PirateShipController PSC;
+    public PirateShipController psc;
 
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
@@ -31,14 +31,15 @@ public class EdoAI : BaseAI
         }
     }
 
+
     public override IEnumerator RunAI()
     {
-        if(PSC.HitGameWall == true)
-        {
-            Debug.Log("boem");
-        }
+        yield return TurnLeft(90);
 
-        yield return TurnLeft(45);
+        if (psc.HitGameWall == true)
+        {
+            Debug.Log("Hello");
+        }
 
             while (true)
             {

@@ -18,7 +18,7 @@ public class PirateShipController : MonoBehaviour
     private float SeaSize = 500.0f;
     private float RotationSpeed = 180.0f;
 
-    public bool HitGameWall = false;
+    public bool HitGameWall = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +39,9 @@ public class PirateShipController : MonoBehaviour
         {
             BoatHealth = BoatHealth - 10;
         }
-        if(other.tag == "GameWall")
+        if (other.tag == "GameWall")
         {
-            HitGameWall = true; 
+            HitGameWall = true;
         }
     }
 
