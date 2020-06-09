@@ -18,6 +18,8 @@ public class PirateShipController : MonoBehaviour
     private float SeaSize = 500.0f;
     private float RotationSpeed = 180.0f;
 
+    public bool HitGameWall = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,16 +39,12 @@ public class PirateShipController : MonoBehaviour
         {
             BoatHealth = BoatHealth - 10;
         }
-        TargetClose();
+        if(other.tag == "GameWall")
+        {
+            HitGameWall = true; 
+        }
     }
 
-    public void TargetClose()
-    {
-        Vector3 targetDir = targetForDirection.position - transform.position;
-        float angle = Vector3.Angle(targetDir, transform.forward);
-        if (angle < 5.0f)
-            print("close");
-    }
 
     public void SetAI(BaseAI _ai) {
         ai = _ai;

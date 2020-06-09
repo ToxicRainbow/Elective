@@ -13,70 +13,7 @@ public class EdoAI : BaseAI
     public bool LookoutIsNowRight = false;
     public bool LookoutIsNowFront = false;
 
-
-    public override IEnumerator RunAI()
-    {
-        while (true)
-        {
-            yield return Ahead(200);
-            // move set for the AI if there is a ship on the left side
-            yield return TurnLookoutLeft(90); 
-            LookoutIsNowLeft = true;
-            if (ShipDetected == true && LookoutIsNowLeft == true)
-            {
-                yield return FireLeft(1);
-                LookoutIsNowLeft = false;
-            }
-            if (ShipDetected1 == true && LookoutIsNowLeft == true)
-            {
-                yield return FireLeft(1);
-                LookoutIsNowLeft = false;
-            }
-            if (ShipDetected2 == true && LookoutIsNowLeft == true)
-            {
-                yield return FireLeft(1);
-                LookoutIsNowLeft = false;
-            }
-
-            // move set for the AI if there is a ship on the Right side
-            yield return TurnLookoutLeft(180);
-            LookoutIsNowRight = true;
-            if (ShipDetected == true && LookoutIsNowRight == true)
-            {
-                yield return FireRight(1);
-                LookoutIsNowRight = false;
-            }
-            if (ShipDetected1 == true && LookoutIsNowRight == true)
-            {
-                yield return FireRight(1);
-                LookoutIsNowRight = false;
-            }
-            if (ShipDetected2 == true && LookoutIsNowRight == true)
-            {
-                yield return FireRight(1);
-                LookoutIsNowRight = false;
-            }
-
-            // move set for the AI if there is a ship on the Front side
-            yield return TurnLookoutLeft(90);
-            LookoutIsNowFront = true;
-            if (ShipDetected == true && LookoutIsNowFront == true)
-            {
-                yield return FireFront(1);
-                LookoutIsNowFront = false;
-            }
-            if (ShipDetected1 == true && LookoutIsNowFront == true)
-            {
-                yield return FireFront(1);
-                LookoutIsNowFront = false;
-            }
-            if (ShipDetected2 == true && LookoutIsNowFront == true)
-            {
-                yield return FireFront(1);
-                LookoutIsNowFront = false;
-            }            
-        }
-    }
+    public PirateShipController PSC;
 
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
@@ -93,6 +30,79 @@ public class EdoAI : BaseAI
             ShipDetected2 = true;
         }
     }
-    
+
+    public override IEnumerator RunAI()
+    {
+        if(PSC.HitGameWall == true)
+        {
+            Debug.Log("boem");
+        }
+
+        yield return TurnLeft(45);
+
+            while (true)
+            {
+                if(ShipDetected == false)
+            {
+                yield return Ahead(200);
+            }
+                // move set for the AI if there is a ship on the left side
+                yield return TurnLookoutLeft(90); 
+                LookoutIsNowLeft = true;
+                if (ShipDetected == true && LookoutIsNowLeft == true)
+                {
+                    yield return FireLeft(1);
+                    LookoutIsNowLeft = false;
+                }
+                else if (ShipDetected1 == true && LookoutIsNowLeft == true)
+                {
+                    yield return FireLeft(1);
+                    LookoutIsNowLeft = false;
+                }
+                else if (ShipDetected2 == true && LookoutIsNowLeft == true)
+                {
+                    yield return FireLeft(1);
+                    LookoutIsNowLeft = false;
+                }
+
+                // move set for the AI if there is a ship on the Right side
+                yield return TurnLookoutLeft(180);
+                LookoutIsNowRight = true;
+                if (ShipDetected == true && LookoutIsNowRight == true)
+                {
+                    yield return FireRight(1);
+                    LookoutIsNowRight = false;
+                }
+                else if (ShipDetected1 == true && LookoutIsNowRight == true)
+                {
+                    yield return FireRight(1);
+                    LookoutIsNowRight = false;
+                }
+                else if (ShipDetected2 == true && LookoutIsNowRight == true)
+                {
+                    yield return FireRight(1);
+                    LookoutIsNowRight = false;
+                }
+
+                // move set for the AI if there is a ship on the Front side
+                yield return TurnLookoutLeft(90);
+                LookoutIsNowFront = true;
+                if (ShipDetected == true && LookoutIsNowFront == true)
+                {
+                    yield return FireFront(1);
+                    LookoutIsNowFront = false;
+                }
+                else if (ShipDetected1 == true && LookoutIsNowFront == true)
+                {
+                    yield return FireFront(1);
+                    LookoutIsNowFront = false;
+                }
+                else if (ShipDetected2 == true && LookoutIsNowFront == true)
+                {
+                    yield return FireFront(1);
+                    LookoutIsNowFront = false;
+                }          
+            }
+        }   
 }
     
