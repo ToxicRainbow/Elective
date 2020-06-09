@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EdoAI : BaseAI
 {
-
     private bool ShipDetected = false;
     private bool ShipDetected1 = false;
     private bool ShipDetected2 = false;
@@ -12,8 +11,6 @@ public class EdoAI : BaseAI
     public bool LookoutIsNowLeft = false;
     public bool LookoutIsNowRight = false;
     public bool LookoutIsNowFront = false;
-
-    public PirateShipController psc;
 
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
@@ -36,7 +33,7 @@ public class EdoAI : BaseAI
     {
         yield return TurnLeft(90);
 
-        if (psc.HitGameWall == true)
+        if (hitGameWall == true)
         {
             Debug.Log("Hello");
         }

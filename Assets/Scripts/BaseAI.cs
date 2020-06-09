@@ -9,7 +9,14 @@ public class ScannedRobotEvent {
 
 public class BaseAI
 {
+
     public PirateShipController Ship = null;
+
+    public bool hitGameWall
+    {
+        get { return Ship.HitGameWall; }
+        set { Ship.HitGameWall = value; }
+    }
 
     // Events
     public virtual void OnScannedRobot(ScannedRobotEvent e)
