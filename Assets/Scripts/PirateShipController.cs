@@ -43,7 +43,7 @@ public class PirateShipController : MonoBehaviour
         }
         if (other.tag == "GameWall")
         {
-            HitGameWall = true;
+            HitGameWall = true;            
         }
     }
 

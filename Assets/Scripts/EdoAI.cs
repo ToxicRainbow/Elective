@@ -33,19 +33,14 @@ public class EdoAI : BaseAI
     {
         yield return TurnLeft(90);
 
-        if (hitGameWall == true)
-        {
-            yield return TurnRight(90);
-        }
-
             while (true)
-            {
+{
                 if(ShipDetected == false)
             {
                 yield return Ahead(200);
-            }
-                // move set for the AI if there is a ship on the left side
-                yield return TurnLookoutLeft(90); 
+            }            
+            // move set for the AI if there is a ship on the left side
+            yield return TurnLookoutLeft(90); 
                 LookoutIsNowLeft = true;
                 if (ShipDetected == true && LookoutIsNowLeft == true)
                 {
@@ -99,8 +94,14 @@ public class EdoAI : BaseAI
                 {
                     yield return FireFront(1);
                     LookoutIsNowFront = false;
-                }          
+                }
+
+            if (hitGameWall == true)
+            {
+                yield return TurnRight(45);
+                hitGameWall = false;
             }
+        }
         }   
 }
     
