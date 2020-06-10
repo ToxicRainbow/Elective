@@ -35,7 +35,7 @@ public class EdoAI : BaseAI
 
         if (hitGameWall == true)
         {
-            Debug.Log("Hello");
+            yield return TurnRight(90);
         }
 
             while (true)
