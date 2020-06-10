@@ -12,10 +12,10 @@ public class PirateShipController : MonoBehaviour
     public GameObject Lookout = null;
     public GameObject[] sails = null;
     private BaseAI ai = null;
-    public Collider boatHitBox; 
+     
 
     public int BoatHealth = 100;
-    private float BoatSpeed = 100.0f;
+    public float BoatSpeed = 100.0f;
     private float SeaSize = 500.0f;
     private float RotationSpeed = 180.0f;
 
@@ -36,10 +36,12 @@ public class PirateShipController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.tag == "CannonBall")
         {
             Debug.Log("hit");
             BoatHealth = BoatHealth - 10;
+            
         }
         if (other.tag == "GameWall")
         {
