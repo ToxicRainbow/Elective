@@ -12,7 +12,10 @@ public class PirateShipController : MonoBehaviour
     public GameObject Lookout = null;
     public GameObject[] sails = null;
     private BaseAI ai = null;
+<<<<<<< HEAD
      
+=======
+>>>>>>> 1b42376f4fc93cb96baf4e949351600ded767712
 
     public int BoatHealth = 100;
     public float BoatSpeed = 100.0f;
@@ -39,7 +42,6 @@ public class PirateShipController : MonoBehaviour
         
         if (other.tag == "CannonBall")
         {
-            Debug.Log("hit");
             BoatHealth = BoatHealth - 10;
             
         }
