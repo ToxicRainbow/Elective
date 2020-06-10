@@ -8,18 +8,49 @@ public class RobertAI : BaseAI
     private bool InRangeShip2 = false;
     private bool InRangeShip3 = false;
 
+    private bool ShipDetected = false;
+    int AIRandomisation = 0;
+
     public override IEnumerator RunAI()
     {
         while (true)
         {
+            yield return Ahead(200);
+            while (ShipDetected == false)
             {
-                yield return Ahead(200);
+                AIRandomisation = Random.Range(1, 4);
+                //Math.random to select random number
+                //3 or more different actions
+                switch (AIRandomisation)
+                {
+                    case 1:
+                        yield return TurnLeft(90);
+                        yield return Ahead(50);
+                        yield return FireFront(1);
+                        break;
+                    case 2:
+                        yield return TurnRight(90);
+                        yield return Ahead(50);
+                        yield return FireFront(1);
+                        break;
+                    case 3:
+                        yield return Ahead(150);
+                        yield return FireFront(1);
+                        break;
+                }
+
+            }
+            while (ShipDetected == true)
+            {
+
+                //when scan to enemy is true, instantiate one of different attack paterns after attack instantiate tactical retreat.
                 if (InRangeShip1 == true)
                 {
                     yield return FireFront(1);
                     yield return FireRight(1);
                     yield return FireLeft(1);
                     InRangeShip1 = false;
+                    ShipDetected = false;
                 }
                 if (InRangeShip2 == true)
                 {
@@ -27,6 +58,7 @@ public class RobertAI : BaseAI
                     yield return FireRight(1);
                     yield return FireLeft(1);
                     InRangeShip2 = false;
+                    ShipDetected = false;
                 }
                 if (InRangeShip3 == true)
                 {
@@ -34,10 +66,11 @@ public class RobertAI : BaseAI
                     yield return FireRight(1);
                     yield return FireLeft(1);
                     InRangeShip3 = false;
+                    ShipDetected = false;
                 }
 
-                //when scan to enemy is true, instantiate one of different attack paterns after attack instantiate tactical retreat.
             }
+
         }
     }
 
@@ -46,14 +79,17 @@ public class RobertAI : BaseAI
         if (e.Name == "Ship0")
         {
             InRangeShip1 = true;
+            ShipDetected = true;
         }
-        else if(e.Name == "Ship1")
+        else if (e.Name == "Ship1")
         {
             InRangeShip2 = true;
+            ShipDetected = true;
         }
         else if (e.Name == "Ship3")
         {
             InRangeShip3 = true;
+            ShipDetected = true;
         }
     }
 }
