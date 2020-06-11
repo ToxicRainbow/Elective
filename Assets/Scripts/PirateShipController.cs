@@ -25,9 +25,10 @@ public class PirateShipController : MonoBehaviour
 
     public string boatName;
 
-    int SwitchState = 0;
+    CompetitionManager cp;
 
     public Text GameoverText;
+
 
 
     // Start is called before the first frame update
@@ -55,14 +56,14 @@ public class PirateShipController : MonoBehaviour
     {
         if(BoatHealth == 0)
         {
-            Destroy(gameObject);
-            SwitchState += 1;
+            cp.SwitchState += 1;
+            Destroy(gameObject);            
         }
     }
 
     public void WinState()
-    {
-       if(SwitchState == 3)
+    {       
+        if (cp.SwitchState == 3)
         {
             Debug.Log("Won");
            GameoverText = GameObject.Find("gameovertext").GetComponent<Text>();

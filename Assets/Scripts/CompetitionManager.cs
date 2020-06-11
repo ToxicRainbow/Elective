@@ -7,6 +7,8 @@ public class CompetitionManager : MonoBehaviour
     public GameObject PirateShipPrefab = null;
     public Transform[] SpawnPoints = null;
 
+    public int SwitchState = 0;
+
     private List<PirateShipController> pirateShips = new List<PirateShipController>();
 
     // Start is called before the first frame update

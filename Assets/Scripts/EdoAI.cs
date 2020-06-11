@@ -100,7 +100,7 @@ public class EdoAI : BaseAI
 {
                 if(ShipDetected == false)
             {
-                Ahead(Random.Range(50, 200));
+               yield return Ahead(Random.Range(50, 200));
             }            
             // move set for the AI if there is a ship on the left side
             yield return TurnLookoutLeft(90); 
