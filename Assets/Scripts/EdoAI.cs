@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EdoAI : BaseAI
 {
+    #region all variables
     private bool ShipDetected = false;
     private bool ShipDetected1 = false;
     private bool ShipDetected2 = false;
@@ -12,6 +13,9 @@ public class EdoAI : BaseAI
     public bool LookoutIsNowRight = false;
     public bool LookoutIsNowFront = false;
 
+    public int randomNumber = Random.Range(0, 10);
+    #endregion
+    #region OnScannedRobot
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
         if (e.Name == "Ship0")
@@ -27,13 +31,72 @@ public class EdoAI : BaseAI
             ShipDetected2 = true;
         }
     }
-
+    #endregion
 
     public override IEnumerator RunAI()
     {
-        yield return TurnLeft(90);
-
-            while (true)
+        #region Start, with random numbers 
+        // with the start of the game it will choose a number between 0 and 9. 
+        // and do the action acoring to that number.
+        if (randomNumber == 0)// left random 
+        {
+            yield return TurnLeft(Random.Range(5, 45));
+        }
+        if (randomNumber == 1)// right random
+        {
+            yield return TurnRight(Random.Range(5, 45));
+        }
+        if (randomNumber == 2)// straight ahead random
+        {
+            yield return Ahead(Random.Range(50, 200));
+        }
+        if (randomNumber == 3)// first left then straight ahead 
+        {
+            yield return TurnLeft(Random.Range(5, 45));
+            yield return Ahead(Random.Range(50, 100));
+        }
+        if (randomNumber == 4)// first right then straight ahead
+        {
+            yield return TurnRight(Random.Range(5, 45));
+            yield return Ahead(Random.Range(50, 100));
+        }
+        if (randomNumber == 5)// first straight ahead then left
+        {
+            yield return Ahead(Random.Range(50, 100));
+            yield return TurnLeft(Random.Range(5, 45));
+        }
+        if (randomNumber == 6)// first straight ahead then right
+        {
+            yield return Ahead(Random.Range(50, 100));
+            yield return TurnRight(Random.Range(5, 45));
+        }
+        if (randomNumber == 7)
+        {
+            yield return TurnLeft(Random.Range(5, 45));
+            yield return Ahead(Random.Range(50, 100));
+            yield return TurnRight(Random.Range(5, 90));
+        }
+        if (randomNumber == 8)
+        {
+            yield return TurnRight(Random.Range(5, 45));
+            yield return Ahead(Random.Range(50, 100));
+            yield return TurnLeft(Random.Range(5, 90));
+        }
+        if (randomNumber == 9)
+        {
+            yield return Ahead(Random.Range(50, 100));
+            yield return TurnLeft(Random.Range(5, 45));            
+            yield return TurnRight(Random.Range(5, 90));
+        }
+        if (randomNumber == 10)
+        {
+            yield return Ahead(Random.Range(50, 100));
+            yield return TurnRight(Random.Range(5, 45));
+            yield return TurnLeft(Random.Range(5, 90));
+        }
+        #endregion
+        #region While loop with all moves
+        while (true)
 {
                 if(ShipDetected == false)
             {
@@ -44,7 +107,7 @@ public class EdoAI : BaseAI
                 LookoutIsNowLeft = true;
                 if (ShipDetected == true && LookoutIsNowLeft == true)
                 {
-                    yield return FireLeft(1);
+                    yield return FireLeft(1);                    
                     LookoutIsNowLeft = false;
                 }
                 else if (ShipDetected1 == true && LookoutIsNowLeft == true)
@@ -102,6 +165,6 @@ public class EdoAI : BaseAI
                 hitGameWall = false;
             }
         }
-        }   
+        }
+    #endregion
 }
-    
