@@ -7,7 +7,7 @@ public class CompetitionManager : MonoBehaviour
     public GameObject PirateShipPrefab = null;
     public Transform[] SpawnPoints = null;
 
-    public int SwitchState = 0;
+    public int SwitchState;
 
     private List<PirateShipController> pirateShips = new List<PirateShipController>();
 
