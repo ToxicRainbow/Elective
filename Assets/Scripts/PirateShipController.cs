@@ -14,6 +14,7 @@ public class PirateShipController : MonoBehaviour
     public GameObject[] sails = null;
     private BaseAI ai = null;
 
+    public int BoatsDown = 0;
     public int BoatHealth = 100;
     public float BoatSpeed = 100.0f;
     private float SeaSize = 500.0f;
@@ -24,8 +25,8 @@ public class PirateShipController : MonoBehaviour
     public Slider healthBar;
 
     public string boatName;
+    public GameObject CompManager;
 
-    public CompetitionManager cp;
 
     public Text GameoverText;
 
@@ -60,14 +61,16 @@ public class PirateShipController : MonoBehaviour
     {
         if(BoatHealth == 0)
         {
-            cp.SwitchState ++;
+            GameObject CompManager = GameObject.Find("CompetitionManager");
+            CompetitionManager competitionmanager = CompManager.GetComponent<CompetitionManager>();
+            competitionmanager.SwitchState++;
             Destroy(gameObject);            
         }
     }
 
     public void WinState()
     {       
-        if (cp.SwitchState == 3)
+        if (BoatsDown == 3)
         {
             Debug.Log("Won");
            GameoverText.gameObject.SetActive(true);
@@ -113,6 +116,9 @@ public class PirateShipController : MonoBehaviour
     {
         BoatDamage();
         WinState();
+        GameObject CompManager = GameObject.Find("CompetitionManager");
+        CompetitionManager competitionmanager = CompManager.GetComponent<CompetitionManager>();
+        BoatsDown = competitionmanager.SwitchState;
     }
 
     void OnTriggerStay(Collider other) {
