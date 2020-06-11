@@ -99,9 +99,18 @@ public class EdoAI : BaseAI
         while (true)
 {
                 if(ShipDetected == false)
-            {
-               yield return Ahead(Random.Range(50, 200));
-            }            
+                {
+                     yield return Ahead(Random.Range(50, 200));
+                }  
+                else if (ShipDetected1 == false)
+                {
+                    yield return Ahead(Random.Range(50, 200));
+                }
+                else if (ShipDetected2 == false)
+                {
+                    yield return Ahead(Random.Range(50, 200));
+                }
+
             // move set for the AI if there is a ship on the left side
             yield return TurnLookoutLeft(90); 
             LookoutIsNowLeft = true;
@@ -109,17 +118,20 @@ public class EdoAI : BaseAI
                 {
                     yield return FireLeft(1);                    
                     LookoutIsNowLeft = false;
+                    ShipDetected = false;
                 }
                 else if (ShipDetected1 == true && LookoutIsNowLeft == true)
                 {
                     yield return FireLeft(1);
                     LookoutIsNowLeft = false;
+                    ShipDetected1 = false;
                 }
                 else if (ShipDetected2 == true && LookoutIsNowLeft == true)
                 {
                     yield return FireLeft(1);
                     LookoutIsNowLeft = false;
-                }
+                    ShipDetected2 = false;
+            }
 
                 // move set for the AI if there is a ship on the Right side
                 yield return TurnLookoutLeft(180);
@@ -128,16 +140,19 @@ public class EdoAI : BaseAI
                 {
                     yield return FireRight(1);
                     LookoutIsNowRight = false;
+                    ShipDetected = false;
                 }
                 else if (ShipDetected1 == true && LookoutIsNowRight == true)
                 {
                     yield return FireRight(1);
                     LookoutIsNowRight = false;
+                    ShipDetected1 = false;
                 }
                 else if (ShipDetected2 == true && LookoutIsNowRight == true)
                 {
                     yield return FireRight(1);
                     LookoutIsNowRight = false;
+                    ShipDetected2 = false;
                 }
 
                 // move set for the AI if there is a ship on the Front side
@@ -147,21 +162,25 @@ public class EdoAI : BaseAI
                 {
                     yield return FireFront(1);
                     LookoutIsNowFront = false;
+                    ShipDetected = false;
                 }
                 else if (ShipDetected1 == true && LookoutIsNowFront == true)
                 {
                     yield return FireFront(1);
                     LookoutIsNowFront = false;
+                    ShipDetected1 = false;
                 }
                 else if (ShipDetected2 == true && LookoutIsNowFront == true)
                 {
                     yield return FireFront(1);
                     LookoutIsNowFront = false;
+                    ShipDetected2 = false;
                 }
 
             if (hitGameWall == true)
             {
-                yield return TurnRight(45);
+                yield return Back(45);
+                yield return TurnRight(Random.Range(90, 180));
                 hitGameWall = false;
             }
         }

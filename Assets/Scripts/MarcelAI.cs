@@ -28,11 +28,11 @@ public class MarcelAI : BaseAI
         yield return TurnLookoutLeft(90);
         while (gamePlaying == true)
         {
-            Debug.Log("yes");
+            //Debug.Log("yes");
             yield return Ahead(5);
             if (shipSpotted == true)
             {
-                Debug.Log("yes");
+               // Debug.Log("yes");
                 target = GameObject.Find(targetName);
                 //Vector3.MoveTowards(me.transform.position, target.transform.position, script.BoatSpeed);
                 yield return FireLeft(1);
@@ -73,6 +73,6 @@ public class MarcelAI : BaseAI
 
         
         targetName = e.Name;
-        Debug.Log(targetName);
+        //Debug.Log(targetName);
     }
 }
