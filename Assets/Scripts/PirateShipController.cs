@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PirateShipController : MonoBehaviour
 {
@@ -18,12 +19,32 @@ public class PirateShipController : MonoBehaviour
     private float SeaSize = 500.0f;
     private float RotationSpeed = 180.0f;
 
-    public bool HitGameWall = false; 
+    public bool HitGameWall = false;
+
+    public Slider healthBar;
+
+    public string boatName;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        boatName = transform.root.name;
+        Debug.Log(boatName);
+        if (boatName == "Ship0")
+        {
+            healthBar = GameObject.Find("Ilja health bar").GetComponent<Slider>();
+        } else if ( boatName == "Ship1")
+        {
+            healthBar = GameObject.Find("Marcel health bar").GetComponent<Slider>();
+        }
+        else if (boatName == "Ship2")
+        {
+            healthBar = GameObject.Find("Robert health bar ").GetComponent<Slider>();
+        }
+        else if (boatName == "Ship3")
+        {
+            healthBar = GameObject.Find("Edo health bar").GetComponent<Slider>();
+        }
     }
     public void BoatDamage()
     {
@@ -39,6 +60,7 @@ public class PirateShipController : MonoBehaviour
         if (other.tag == "CannonBall")
         {
             BoatHealth = BoatHealth - 10;
+            healthBar.value -= 0.1f;
             
         }
         if (other.tag == "GameWall")
