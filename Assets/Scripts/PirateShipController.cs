@@ -47,6 +47,14 @@ public class PirateShipController : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "GameWall")
+        {
+            HitGameWall = false;
+        }
+    }
+
 
     public void SetAI(BaseAI _ai) {
         ai = _ai;
