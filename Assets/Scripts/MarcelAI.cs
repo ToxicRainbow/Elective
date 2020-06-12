@@ -11,6 +11,9 @@ public class MarcelAI : BaseAI
     public string targetName;
     public PirateShipController script;
     public bool gamePlaying;
+    public bool healthSwap = false;
+    public Color color;
+    
 
     
         
@@ -19,49 +22,99 @@ public class MarcelAI : BaseAI
 
     public override IEnumerator RunAI()
     {
-        //yield return Ahead(400);
+        color = new Color(0.5F, 0F, 0.5F, 0);
+
         gamePlaying = true;
         me = GameObject.Find("MarcelAI");
-        Debug.Log(me);
+        
         script = me.GetComponent<PirateShipController>();
-        yield return TurnRight(45);
-        yield return TurnLookoutLeft(90);
+        script.__SetColor(color);
+
         while (gamePlaying == true)
         {
-            //Debug.Log("yes");
-            yield return Ahead(5);
-            if (shipSpotted == true)
+            if (script.BoatHealth > 30)
             {
-               // Debug.Log("yes");
-                target = GameObject.Find(targetName);
-                //Vector3.MoveTowards(me.transform.position, target.transform.position, script.BoatSpeed);
-                yield return FireLeft(1);
-                shipSpotted = false;
-                yield return null;
+                yield return Ahead(100);
+                if (shipSpotted == true)
+                {
+                    yield return FireFront(5);
+                    shipSpotted = false;
+                }
+                else
+                {
+                    yield return TurnLookoutRight(90);
+                    if (shipSpotted == true)
+                    {
+                        yield return TurnRight(90);
+                        yield return TurnLookoutLeft(90);
+                        yield return FireFront(5);
+                        shipSpotted = false;
+                    }
+                    else
+                    {
+                        yield return TurnLookoutRight(90);
+                        if (shipSpotted == true)
+                        {
+                            yield return TurnRight(180);
+                            yield return TurnLookoutLeft(180);
+                            yield return FireFront(5);
+                            shipSpotted = false;
+                        }
+                        else
+                        {
+                            
+                            yield return TurnLookoutRight(90);
+                            if (shipSpotted == true)
+                            {
+                                yield return TurnRight(270);
+                                yield return TurnLookoutLeft(270);
+                                yield return FireFront(5);
+                                shipSpotted = false;
+                            }
+                            else
+                            {
+
+                                yield return TurnLookoutRight(90);
+                            }
+                        }
+                    }
+                    
+                }
+                if (script.HitGameWall == true)
+                {
+                    yield return Back(30);
+                    yield return TurnLeft(90);
+
+                }
             }
-            else
+            if (script.BoatHealth <= 30)
             {
-                yield return null;
+                if (healthSwap == false)
+                {
+                    yield return TurnLeft(45);
+                    yield return TurnLookoutLeft(90);
+                    healthSwap = true;
+                }
+                yield return Ahead(10);
+                if (shipSpotted == true)
+                {
+                    target = GameObject.Find(targetName);
+                    yield return FireLeft(1);
+                    shipSpotted = false;
+                }
+                if (script.HitGameWall == true)
+                {
+                    yield return Back(30);
+                    yield return TurnLeft(90);
+
+                }
             }
-            if (script.HitGameWall == true)
-            {
-                yield return Back(30);
-                yield return TurnLeft(90);
-                
-            }
+            yield return null;   
         }
-        //for (int i = 0; i < 9999; i++)
-        //{
-            //yield return Ahead(100);
-            //yield return FireFront(1);
-            //yield return FireLeft(1);
-            //yield return FireRight(1);
-            //yield return TurnLookoutLeft(90);
-            //yield return TurnLeft(5);
-            //yield return FireLeft(1);
-            //yield return TurnLookoutRight(180);
-        //}
+        
     }
+
+   
 
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
@@ -73,6 +126,5 @@ public class MarcelAI : BaseAI
 
         
         targetName = e.Name;
-        //Debug.Log(targetName);
     }
 }
