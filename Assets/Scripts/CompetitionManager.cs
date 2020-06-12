@@ -11,6 +11,8 @@ public class CompetitionManager : MonoBehaviour
 
     private List<PirateShipController> pirateShips = new List<PirateShipController>();
 
+    public float timeSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class CompetitionManager : MonoBehaviour
             new RobertAI(),
             new EdoAI()
         };
+
+        
 
         for (int i = 0; i < 4; i++)
         {
@@ -39,6 +43,19 @@ public class CompetitionManager : MonoBehaviour
             foreach (var pirateShip in pirateShips) {
                 pirateShip.StartBattle();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && timeSpeed <16)
+        {
+            timeSpeed = timeSpeed * 2;
+            Time.timeScale = timeSpeed;
+            Debug.Log(timeSpeed);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) && timeSpeed >= 0.5)
+        {
+            timeSpeed = timeSpeed / 2;
+            Time.timeScale = timeSpeed;
+            Debug.Log(timeSpeed);
         }
     }
 }
