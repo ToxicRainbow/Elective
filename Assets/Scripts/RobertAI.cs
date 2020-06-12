@@ -24,8 +24,10 @@ public class RobertAI : BaseAI
         while (true)
         {
             yield return Ahead(200);
+            //while no ship in range
             while (ShipDetected == false)
             {
+                //On wall detection turn the ship away to avoid wall hugging.
                 if (hitGameWall == true)
                 {
                     yield return TurnRight(180);
@@ -33,7 +35,7 @@ public class RobertAI : BaseAI
                     hitGameWall = false;
                 }
                 AIRandomisation = Random.Range(1, 4);
-                //Math.random to select random number
+                //Random.Range to select random number
                 //3 or more different actions
                 switch (AIRandomisation)
                 {
@@ -51,14 +53,16 @@ public class RobertAI : BaseAI
                 }
 
             }
+            //while a ship in range
             while (ShipDetected == true)
             {
+                //On wall detection turn the ship away to avoid wall hugging.
                 if (hitGameWall == true)
                 {
                     yield return TurnRight(180);
                     hitGameWall = false;
                 }
-                //when scan to enemy is true, instantiate one of different attack paterns after attack instantiate tactical retreat.
+                //when scan to enemy is detected, instantiate one of different attacks.
                 if (InRangeShip1 == true)
                 {
                     yield return FireFront(1);
@@ -92,6 +96,7 @@ public class RobertAI : BaseAI
         }
     }
 
+    //Scan for ships with different names
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
         if (e.Name == "IljaAI")
