@@ -72,8 +72,7 @@ public class PirateShipController : MonoBehaviour
     {       
         if (BoatsDown == 3)
         {
-            Debug.Log(this.gameObject + "WINS!");
-            GameoverText.text = this.gameObject.name;
+            GameoverText.text = this.gameObject.name + "WINS!";
             GameoverText.gameObject.SetActive(true);
         }
     }
