@@ -10,6 +10,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("BattleScene");
     }
 
+    public void OpenMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
@@ -21,5 +26,15 @@ public class Menu : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+    }
+
+    public void Controls()
+    {
+        SceneManager.LoadScene("Controls");
+    }
+
+    public void HideHelpText()
+    {
+
     }
 }
