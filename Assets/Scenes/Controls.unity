@@ -379,6 +379,8 @@ MonoBehaviour:
 
     DOWN = Slow down Game
 
+    R = Reload game
+
 '
 --- !u!222 &441818324
 CanvasRenderer:
