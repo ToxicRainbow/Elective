@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CompetitionManager : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class CompetitionManager : MonoBehaviour
     public float timeSpeed = 1;
     string[] names;
     public bool GameBegin = false;
+
+    public Text TextInfo;
+
+    void Awake()
+    {
+        TextInfo = GameObject.Find("GameInfo").GetComponent<Text>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +58,7 @@ public class CompetitionManager : MonoBehaviour
                     pirateShip.StartBattle();
                 }
                 GameBegin = true;
+                TextInfo.gameObject.SetActive(false);
                 Debug.Log("GameStarted");
             }
         }
