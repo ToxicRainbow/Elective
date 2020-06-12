@@ -35,7 +35,7 @@ public class EdoAI : BaseAI
 
     public override IEnumerator RunAI()
     {
-        #region Start, with random numbers 
+    #region Start, with random numbers 
         // with the start of the game it will choose a number between 0 and 9. 
         // and do the action acoring to that number.
         if (randomNumber == 0)// left random 
@@ -95,87 +95,106 @@ public class EdoAI : BaseAI
             yield return TurnLeft(Random.Range(5, 90));
         }
         #endregion
-        #region While loop with all moves
-        while (true)
-{
-                if(ShipDetected == false)
-                {
-                     yield return Ahead(Random.Range(50, 200));
-                }  
-                else if (ShipDetected1 == false)
-                {
-                    yield return Ahead(Random.Range(50, 200));
-                }
-                else if (ShipDetected2 == false)
-                {
-                    yield return Ahead(Random.Range(50, 200));
-                }
-
-            // move set for the AI if there is a ship on the left side
-            yield return TurnLookoutLeft(90); 
-            LookoutIsNowLeft = true;
-                if (ShipDetected == true && LookoutIsNowLeft == true)
-                {
-                    yield return FireLeft(1);                    
-                    LookoutIsNowLeft = false;
-                    ShipDetected = false;
-                }
-                else if (ShipDetected1 == true && LookoutIsNowLeft == true)
-                {
-                    yield return FireLeft(1);
-                    LookoutIsNowLeft = false;
-                    ShipDetected1 = false;
-                }
-                else if (ShipDetected2 == true && LookoutIsNowLeft == true)
-                {
-                    yield return FireLeft(1);
-                    LookoutIsNowLeft = false;
-                    ShipDetected2 = false;
+    #region While loop with all moves
+        while (true){
+            if (ShipDetected == false || ShipDetected1 == false || ShipDetected2 == false)
+            {
+                yield return Ahead(Random.Range(50, 200));
             }
 
-                // move set for the AI if there is a ship on the Right side
-                yield return TurnLookoutLeft(180);
-                LookoutIsNowRight = true;
-                if (ShipDetected == true && LookoutIsNowRight == true)
-                {
-                    yield return FireRight(1);
-                    LookoutIsNowRight = false;
-                    ShipDetected = false;
-                }
-                else if (ShipDetected1 == true && LookoutIsNowRight == true)
-                {
-                    yield return FireRight(1);
-                    LookoutIsNowRight = false;
-                    ShipDetected1 = false;
-                }
-                else if (ShipDetected2 == true && LookoutIsNowRight == true)
-                {
-                    yield return FireRight(1);
-                    LookoutIsNowRight = false;
-                    ShipDetected2 = false;
-                }
+            // move set for the AI if there is a ship on the left side
+            yield return TurnLookoutLeft(90);
+            LookoutIsNowLeft = true;
+            if (ShipDetected == true && LookoutIsNowLeft == true)
+            {
+                yield return FireLeft(1);
+                yield return TurnLeft(90);
+                ShipDetected = false;
+                LookoutIsNowLeft = false;
+            }
+            else if (ShipDetected1 == true && LookoutIsNowLeft == true)
+            {
+                yield return FireLeft(1);
+                yield return TurnLeft(90);
+                LookoutIsNowLeft = false;
+                ShipDetected1 = false;
+            }
+            else if (ShipDetected2 == true && LookoutIsNowLeft == true)
+            {
+                yield return FireLeft(1);
+                yield return TurnLeft(90);
+                LookoutIsNowLeft = false;
+                ShipDetected2 = false;
+            }
 
-                // move set for the AI if there is a ship on the Front side
-                yield return TurnLookoutLeft(90);
-                LookoutIsNowFront = true;
-                if (ShipDetected == true && LookoutIsNowFront == true)
-                {
-                    yield return FireFront(1);
-                    LookoutIsNowFront = false;
-                    ShipDetected = false;
-                }
-                else if (ShipDetected1 == true && LookoutIsNowFront == true)
-                {
-                    yield return FireFront(1);
-                    LookoutIsNowFront = false;
-                    ShipDetected1 = false;
-                }
-                else if (ShipDetected2 == true && LookoutIsNowFront == true)
-                {
-                    yield return FireFront(1);
-                    LookoutIsNowFront = false;
-                    ShipDetected2 = false;
-                }
+            // front side
+            yield return TurnLookoutRight(0);
+            LookoutIsNowFront = true;
+            if (ShipDetected == true && LookoutIsNowFront == true)
+            {
+                yield return FireFront(1);
+                LookoutIsNowFront = false;
+                ShipDetected = false;
+            }
+            else if (ShipDetected1 == true && LookoutIsNowFront == true)
+            {
+                yield return FireFront(1);
+                LookoutIsNowFront = false;
+                ShipDetected1 = false;
+            }
+            else if (ShipDetected2 == true && LookoutIsNowFront == true)
+            {
+                yield return FireFront(1);
+                LookoutIsNowFront = false;
+                ShipDetected2 = false;
+            }
+
+            // move set for the AI if there is a ship on the Right side
+            yield return TurnLookoutRight(180);
+            LookoutIsNowRight = true;
+            if (ShipDetected == true && LookoutIsNowRight == true)
+            {
+                yield return FireRight(1);
+                yield return TurnRight(90);
+                LookoutIsNowRight = false;
+                ShipDetected = false;
+            }
+            else if (ShipDetected1 == true && LookoutIsNowRight == true)
+            {
+                yield return FireRight(1);
+                yield return TurnRight(90);
+                LookoutIsNowRight = false;
+                ShipDetected1 = false;
+            }
+            else if (ShipDetected2 == true && LookoutIsNowRight == true)
+            {
+                yield return FireRight(1);
+                yield return TurnRight(90);
+                LookoutIsNowRight = false;
+                ShipDetected2 = false;
+            }
+
+            // move set for the AI if there is a ship on the Front side
+            yield return TurnLookoutLeft(90);
+            LookoutIsNowFront = true;
+            if (ShipDetected == true && LookoutIsNowFront == true)
+            {
+                yield return FireFront(1);
+                LookoutIsNowFront = false;
+                ShipDetected = false;
+            }
+            else if (ShipDetected1 == true && LookoutIsNowFront == true)
+            {
+                yield return FireFront(1);
+                LookoutIsNowFront = false;
+                ShipDetected1 = false;
+            }
+            else if (ShipDetected2 == true && LookoutIsNowFront == true)
+            {
+                yield return FireFront(1);
+                LookoutIsNowFront = false;
+                ShipDetected2 = false;
+            }
 
             if (hitGameWall == true)
             {
@@ -184,6 +203,6 @@ public class EdoAI : BaseAI
                 hitGameWall = false;
             }
         }
-        }
+    }
     #endregion
 }
