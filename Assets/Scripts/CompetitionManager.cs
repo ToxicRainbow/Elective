@@ -13,6 +13,7 @@ public class CompetitionManager : MonoBehaviour
 
     public float timeSpeed = 1;
     string[] names;
+    public bool GameBegin = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +41,19 @@ public class CompetitionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            foreach (var pirateShip in pirateShips) {
-                pirateShip.StartBattle();
+        if(GameBegin == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                foreach (var pirateShip in pirateShips)
+                {
+                    pirateShip.StartBattle();
+                }
+                GameBegin = true;
+                Debug.Log("GameStarted");
             }
         }
+
 
         if (Input.GetKeyDown(KeyCode.UpArrow) && timeSpeed <16)
         {
