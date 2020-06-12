@@ -18,15 +18,15 @@ public class EdoAI : BaseAI
     #region OnScannedRobot
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
-        if (e.Name == "Ship0")
+        if (e.Name == "IljaAI")
         {
             ShipDetected = true;
         }
-        else if (e.Name == "Ship1")
+        else if (e.Name == "RobertAI")
         {
             ShipDetected1 = true;
         }
-        else if (e.Name == "Ship2")
+        else if (e.Name == "MarcelAI")
         {
             ShipDetected2 = true;
         }

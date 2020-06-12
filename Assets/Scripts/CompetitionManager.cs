@@ -12,6 +12,7 @@ public class CompetitionManager : MonoBehaviour
     private List<PirateShipController> pirateShips = new List<PirateShipController>();
 
     public float timeSpeed = 1;
+    string[] names;
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +24,15 @@ public class CompetitionManager : MonoBehaviour
             new EdoAI()
         };
 
-        
+        names = new string[]{"IljaAI", "MarcelAI", "RobertAI", "EdoAI"};
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < names.Length; i++)
         {
             GameObject pirateShip = Instantiate(PirateShipPrefab, SpawnPoints[i].position, SpawnPoints[i].rotation);
             PirateShipController pirateShipController = pirateShip.GetComponent<PirateShipController>();
             pirateShipController.SetAI(aiArray[i]);
             pirateShips.Add(pirateShipController);
-            pirateShip.name = "Ship" + i;
+            pirateShip.name = names[i];
         }
         
     }

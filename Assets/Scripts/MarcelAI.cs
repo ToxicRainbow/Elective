@@ -21,7 +21,7 @@ public class MarcelAI : BaseAI
     {
         //yield return Ahead(400);
         gamePlaying = true;
-        me = GameObject.Find("Ship1");
+        me = GameObject.Find("MarcelAI");
         Debug.Log(me);
         script = me.GetComponent<PirateShipController>();
         yield return TurnRight(45);
@@ -66,7 +66,7 @@ public class MarcelAI : BaseAI
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
         //Debug.Log("Ship detected: " + e.Name + " at distance: " + e.Distance);
-        if (e.Name == "Ship0" || e.Name == "Ship2" || e.Name == "Ship3")
+        if (e.Name == "IljaAI" || e.Name == "RobertAI" || e.Name == "EdoAI")
         {
             shipSpotted = true;
         }

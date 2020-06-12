@@ -41,18 +41,18 @@ public class PirateShipController : MonoBehaviour
         GameoverText.gameObject.SetActive(false);
         boatName = transform.root.name;
         Debug.Log(boatName);
-        if (boatName == "Ship0")
+        if (boatName == "IljaAI")
         {
             healthBar = GameObject.Find("Ilja health bar").GetComponent<Slider>();
-        } else if ( boatName == "Ship1")
+        } else if ( boatName == "MarcelAI")
         {
             healthBar = GameObject.Find("Marcel health bar").GetComponent<Slider>();
         }
-        else if (boatName == "Ship2")
+        else if (boatName == "RobertAI")
         {
             healthBar = GameObject.Find("Robert health bar ").GetComponent<Slider>();
         }
-        else if (boatName == "Ship3")
+        else if (boatName == "EdoAI")
         {
             healthBar = GameObject.Find("Edo health bar").GetComponent<Slider>();
         }
@@ -72,8 +72,9 @@ public class PirateShipController : MonoBehaviour
     {       
         if (BoatsDown == 3)
         {
-            Debug.Log("Won");
-           GameoverText.gameObject.SetActive(true);
+            Debug.Log(this.gameObject + "WINS!");
+            GameoverText.text = this.gameObject.name;
+            GameoverText.gameObject.SetActive(true);
         }
     }
 

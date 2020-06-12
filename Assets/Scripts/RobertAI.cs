@@ -76,17 +76,17 @@ public class RobertAI : BaseAI
 
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
-        if (e.Name == "Ship0")
+        if (e.Name == "IljaAI")
         {
             InRangeShip1 = true;
             ShipDetected = true;
         }
-        else if (e.Name == "Ship1")
+        else if (e.Name == "MarcelAI")
         {
             InRangeShip2 = true;
             ShipDetected = true;
         }
-        else if (e.Name == "Ship3")
+        else if (e.Name == "EdoAI")
         {
             InRangeShip3 = true;
             ShipDetected = true;
