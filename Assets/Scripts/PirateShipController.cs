@@ -27,22 +27,27 @@ public class PirateShipController : MonoBehaviour
     public string boatName;
     public GameObject CompManager;
 
+    //cooldown for the shooting with the boat
     float timeBetweenShoot = 0.5f;
 
 
     public Text GameoverText;
 
+    
     void Awake()
     {
+        //used to find the text we want to edit
         GameoverText = GameObject.Find("gameovertext").GetComponent<Text>();
     }
 
-    // here we link our health bars with our boats
+    
     void Start()
     {
+        //setting the gameover text to false as we only need it when someone wins. Done here in case someone restarts the level
         GameoverText.gameObject.SetActive(false);
-        boatName = transform.root.name;
-        Debug.Log(boatName);
+
+        // here we link our health bars with our boats
+        boatName = transform.root.name;  
         if (boatName == "IljaAI")
         {
             healthBar = GameObject.Find("Ilja health bar").GetComponent<Slider>();
@@ -91,6 +96,7 @@ public class PirateShipController : MonoBehaviour
             healthBar.value -= 0.1f;
             
         }
+        // checks if a boat is running into the edges of the game, can be used by individual code
         if (other.tag == "GameWall")
         {
             HitGameWall = true;            
@@ -99,6 +105,7 @@ public class PirateShipController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // checks when the boat is gone from the  game wall again.
         if (other.tag == "GameWall")
         {
             HitGameWall = false;
@@ -112,7 +119,6 @@ public class PirateShipController : MonoBehaviour
     }
 
     public void StartBattle() {
-        Debug.Log("test");
         StartCoroutine(ai.RunAI());
     }
 
