@@ -92,8 +92,9 @@ public class PirateShipController : MonoBehaviour
         // if a boat gets hit by a canon ball the boat health will take damage
         if (other.tag == "CannonBall")
         {
-            BoatHealth = BoatHealth - 10;
             healthBar.value -= 0.1f;
+            BoatHealth = BoatHealth - 10;
+            
             
         }
         // checks if a boat is running into the edges of the game, can be used by individual code
