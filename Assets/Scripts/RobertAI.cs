@@ -29,6 +29,7 @@ public class RobertAI : BaseAI
                 if (hitGameWall == true)
                 {
                     yield return TurnRight(180);
+                    yield return Ahead(100);
                     hitGameWall = false;
                 }
                 AIRandomisation = Random.Range(1, 4);
@@ -37,18 +38,15 @@ public class RobertAI : BaseAI
                 switch (AIRandomisation)
                 {
                     case 1:
-                        yield return TurnLeft(90);
+                        yield return TurnLeft(45);
                         yield return Ahead(50);
-                        yield return FireFront(1);
                         break;
                     case 2:
                         yield return TurnRight(90);
                         yield return Ahead(50);
-                        yield return FireFront(1);
                         break;
                     case 3:
                         yield return Ahead(150);
-                        yield return FireFront(1);
                         break;
                 }
 
@@ -66,6 +64,7 @@ public class RobertAI : BaseAI
                     yield return FireFront(1);
                     yield return FireRight(1);
                     yield return FireLeft(1);
+                    yield return Back(20);
                     InRangeShip1 = false;
                     ShipDetected = false;
                 }
@@ -74,6 +73,7 @@ public class RobertAI : BaseAI
                     yield return FireFront(1);
                     yield return FireRight(1);
                     yield return FireLeft(1);
+                    yield return Ahead(20);
                     InRangeShip2 = false;
                     ShipDetected = false;
                 }
@@ -82,6 +82,7 @@ public class RobertAI : BaseAI
                     yield return FireFront(1);
                     yield return FireRight(1);
                     yield return FireLeft(1);
+                    yield return TurnLeft(90);
                     InRangeShip3 = false;
                     ShipDetected = false;
                 }
