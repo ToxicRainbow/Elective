@@ -27,6 +27,8 @@ public class PirateShipController : MonoBehaviour
     public string boatName;
     public GameObject CompManager;
 
+    int timeBetweenShoot = 2;
+
 
     public Text GameoverText;
 
@@ -178,17 +180,17 @@ public class PirateShipController : MonoBehaviour
 
     public IEnumerator __FireFront(float power) {
         GameObject newInstance = Instantiate(CannonBallPrefab, CannonFrontSpawnPoint.position, CannonFrontSpawnPoint.rotation);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeBetweenShoot);
     }
 
     public IEnumerator __FireLeft(float power) {
         GameObject newInstance = Instantiate(CannonBallPrefab, CannonLeftSpawnPoint.position, CannonLeftSpawnPoint.rotation);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeBetweenShoot);
     }
 
     public IEnumerator __FireRight(float power) {
         GameObject newInstance = Instantiate(CannonBallPrefab, CannonRightSpawnPoint.position, CannonRightSpawnPoint.rotation);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(timeBetweenShoot);
     }
 
     public void __SetColor(Color color) {
