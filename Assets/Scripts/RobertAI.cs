@@ -11,8 +11,16 @@ public class RobertAI : BaseAI
     private bool ShipDetected = false;
     int AIRandomisation = 0;
 
+    public PirateShipController script;
+    public Color color;
+    public GameObject me;   
+
     public override IEnumerator RunAI()
     {
+        me = GameObject.Find("RobertAI");
+        script = me.GetComponent<PirateShipController>();
+        color = new Color(0.8F, 0.8F, 0.1F, 1F);
+        script.__SetColor(color);
         while (true)
         {
             yield return Ahead(200);
