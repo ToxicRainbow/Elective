@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class IljaAI : BaseAI
 {
+    public PirateShipController script;
+    public Color color;
+    public GameObject me;
+
     public override IEnumerator RunAI() {
+
+        me = GameObject.Find("IljaAI");
+        script = me.GetComponent<PirateShipController>();
+        color = new Color(0F, 0F, 0F, 1F);
+        script.__SetColor(color);
+
         for (int i = 0; i < 10; i++)
         {
             yield return Ahead(200);
