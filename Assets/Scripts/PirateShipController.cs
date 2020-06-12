@@ -27,7 +27,7 @@ public class PirateShipController : MonoBehaviour
     public string boatName;
     public GameObject CompManager;
 
-    int timeBetweenShoot = 2;
+    float timeBetweenShoot = 0.5f;
 
 
     public Text GameoverText;
