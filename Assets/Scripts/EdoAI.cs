@@ -207,7 +207,7 @@ public class EdoAI : BaseAI
 
             if (hitGameWall == true)
             {
-                yield return Back(45);
+                yield return Back(15);
                 yield return TurnRight(Random.Range(90, 180));
                 hitGameWall = false;
             }

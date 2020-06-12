@@ -32,9 +32,4 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Controls");
     }
-
-    public void HideHelpText()
-    {
-
-    }
 }
