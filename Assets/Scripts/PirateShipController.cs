@@ -37,7 +37,7 @@ public class PirateShipController : MonoBehaviour
         GameoverText = GameObject.Find("gameovertext").GetComponent<Text>();
     }
 
-    // Start is called before the first frame update
+    // here we link our health bars with our boats
     void Start()
     {
         GameoverText.gameObject.SetActive(false);
@@ -60,6 +60,7 @@ public class PirateShipController : MonoBehaviour
         }
     }
 
+    // every time a boat dies switchstate wil go up
     public void BoatDamage()
     {
         if(BoatHealth == 0)
@@ -71,6 +72,7 @@ public class PirateShipController : MonoBehaviour
         }
     }
 
+    // when swhichstate hits 3 this function will trigger. 
     public void WinState()
     {       
         if (BoatsDown == 3)
@@ -82,7 +84,7 @@ public class PirateShipController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        // if a boat gets hit by a canon ball the boat health will take damage
         if (other.tag == "CannonBall")
         {
             BoatHealth = BoatHealth - 10;

@@ -23,6 +23,7 @@ public class EdoAI : BaseAI
     #region OnScannedRobot
     public override void OnScannedRobot(ScannedRobotEvent e)
     {
+        // here i give each ship a name to be later used in the code
         if (e.Name == "IljaAI")
         {
             ShipDetected = true;
@@ -40,6 +41,7 @@ public class EdoAI : BaseAI
 
     public override IEnumerator RunAI()
     {
+        // code to change the colour of my ship
         me = GameObject.Find("EdoAI");
         script = me.GetComponent<PirateShipController>();
         color = new Color(0.1F, 0.7F, 0.8F, 1F);
@@ -80,25 +82,25 @@ public class EdoAI : BaseAI
             yield return Ahead(Random.Range(50, 100));
             yield return TurnRight(Random.Range(5, 45));
         }
-        if (randomNumber == 7)
+        if (randomNumber == 7)// first turn left then ahead and then right again
         {
             yield return TurnLeft(Random.Range(5, 45));
             yield return Ahead(Random.Range(50, 100));
             yield return TurnRight(Random.Range(5, 90));
         }
-        if (randomNumber == 8)
+        if (randomNumber == 8)// first turn right then aheaad and then left again
         {
             yield return TurnRight(Random.Range(5, 45));
             yield return Ahead(Random.Range(50, 100));
             yield return TurnLeft(Random.Range(5, 90));
         }
-        if (randomNumber == 9)
+        if (randomNumber == 9)// first ahead then left and then right 
         {
             yield return Ahead(Random.Range(50, 100));
             yield return TurnLeft(Random.Range(5, 45));            
             yield return TurnRight(Random.Range(5, 90));
         }
-        if (randomNumber == 10)
+        if (randomNumber == 10)// first ahead then left and then right
         {
             yield return Ahead(Random.Range(50, 100));
             yield return TurnRight(Random.Range(5, 45));
@@ -107,12 +109,16 @@ public class EdoAI : BaseAI
         #endregion
     #region While loop with all moves
         while (true){
+            // if there are no ships detected it will go straight ahead for a random amount between
+            // 50 and 200
             if (ShipDetected == false || ShipDetected1 == false || ShipDetected2 == false)
             {
                 yield return Ahead(Random.Range(50, 200));
             }
 
             // move set for the AI if there is a ship on the left side
+            // it will first turn the lookout left and then set the bool to true so that it can activate 
+            // the following actions below.
             yield return TurnLookoutLeft(90);
             LookoutIsNowLeft = true;
             if (ShipDetected == true && LookoutIsNowLeft == true)
@@ -137,7 +143,7 @@ public class EdoAI : BaseAI
                 ShipDetected2 = false;
             }
 
-            // front side
+            // move set for the AI if there is a ship on the Right side
             yield return TurnLookoutRight(0);
             LookoutIsNowFront = true;
             if (ShipDetected == true && LookoutIsNowFront == true)
@@ -206,6 +212,8 @@ public class EdoAI : BaseAI
                 ShipDetected2 = false;
             }
 
+            // if the ship hits a wall it will go back and turn a random amount, between 90 and 180, 
+            // degrees around
             if (hitGameWall == true)
             {
                 yield return Back(15);

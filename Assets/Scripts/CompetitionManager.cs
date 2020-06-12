@@ -8,6 +8,7 @@ public class CompetitionManager : MonoBehaviour
     public GameObject PirateShipPrefab = null;
     public Transform[] SpawnPoints = null;
 
+    // switchstate is here to hold the number of boats killed because we cant put in pirateShipController
     public int SwitchState = 0;
 
     private List<PirateShipController> pirateShips = new List<PirateShipController>();
@@ -63,7 +64,7 @@ public class CompetitionManager : MonoBehaviour
             }
         }
 
-
+        // function to speed up the game
         if (Input.GetKeyDown(KeyCode.UpArrow) && timeSpeed <16)
         {
             timeSpeed = timeSpeed * 2;

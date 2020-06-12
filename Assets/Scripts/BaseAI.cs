@@ -11,7 +11,8 @@ public class BaseAI
 {
 
     public PirateShipController Ship = null;
-
+    // function that ilja helped with. it makes it so we can use a function from pirates ship in our 
+    // own ai script
     public bool hitGameWall
     {
         get { return Ship.HitGameWall; }

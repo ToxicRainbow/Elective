@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
-{
+{   
+    // menu script that loads the scene that is needed
     public void OpenGame()
     {
         SceneManager.LoadScene("BattleScene");
