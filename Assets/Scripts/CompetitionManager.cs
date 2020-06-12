@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class CompetitionManager : MonoBehaviour
 {
@@ -65,6 +67,11 @@ public class CompetitionManager : MonoBehaviour
         }
 
         // function to speed up the game
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         if (Input.GetKeyDown(KeyCode.UpArrow) && timeSpeed <16)
         {
             timeSpeed = timeSpeed * 2;
