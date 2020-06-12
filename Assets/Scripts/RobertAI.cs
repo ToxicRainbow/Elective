@@ -18,6 +18,11 @@ public class RobertAI : BaseAI
             yield return Ahead(200);
             while (ShipDetected == false)
             {
+                if (hitGameWall == true)
+                {
+                    yield return TurnRight(180);
+                    hitGameWall = false;
+                }
                 AIRandomisation = Random.Range(1, 4);
                 //Math.random to select random number
                 //3 or more different actions
@@ -42,7 +47,11 @@ public class RobertAI : BaseAI
             }
             while (ShipDetected == true)
             {
-
+                if (hitGameWall == true)
+                {
+                    yield return TurnRight(180);
+                    hitGameWall = false;
+                }
                 //when scan to enemy is true, instantiate one of different attack paterns after attack instantiate tactical retreat.
                 if (InRangeShip1 == true)
                 {
