@@ -57,6 +57,7 @@ public class PirateShipController : MonoBehaviour
             healthBar = GameObject.Find("Edo health bar").GetComponent<Slider>();
         }
     }
+
     public void BoatDamage()
     {
         if(BoatHealth == 0)
@@ -175,19 +176,20 @@ public class PirateShipController : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
 
+
     public IEnumerator __FireFront(float power) {
         GameObject newInstance = Instantiate(CannonBallPrefab, CannonFrontSpawnPoint.position, CannonFrontSpawnPoint.rotation);
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(5);
     }
 
     public IEnumerator __FireLeft(float power) {
         GameObject newInstance = Instantiate(CannonBallPrefab, CannonLeftSpawnPoint.position, CannonLeftSpawnPoint.rotation);
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(5);
     }
 
     public IEnumerator __FireRight(float power) {
         GameObject newInstance = Instantiate(CannonBallPrefab, CannonRightSpawnPoint.position, CannonRightSpawnPoint.rotation);
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(5);
     }
 
     public void __SetColor(Color color) {
