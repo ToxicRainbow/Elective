@@ -44,8 +44,9 @@ public class EdoAI : BaseAI
         script = me.GetComponent<PirateShipController>();
         color = new Color(0.1F, 0.7F, 0.8F, 1F);
         script.__SetColor(color);
+
         #region Start, with random numbers 
-        // with the start of the game it will choose a number between 0 and 9. 
+        // with the start of the game it will choose a number between 0 and 10. 
         // and do the action acoring to that number.
         if (randomNumber == 0)// left random 
         {
